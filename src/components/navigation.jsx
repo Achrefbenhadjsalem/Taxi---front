@@ -1,7 +1,16 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../components/AuthContext";
 
-export const Navigation = (props) => {
+export const Navigation = () => {
+  const { isAuthenticated, username, logout } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/"); // Rediriger vers la page d'accueil après la déconnexion
+  };
+
   return (
     <nav id="menu" className="navbar navbar-default navbar-fixed-top">
       <div className="container">
@@ -22,62 +31,51 @@ export const Navigation = (props) => {
           </a>
         </div>
 
-        <div
-          className="collapse navbar-collapse"
-          id="bs-example-navbar-collapse-1"
-        >
+        <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul className="nav navbar-nav navbar-right">
             <li>
-              <a href="#features" className="page-scroll">
-                Features
-              </a>
+              <a href="#features" className="page-scroll">Features</a>
             </li>
             <li>
-              <a href="#about" className="page-scroll">
-                About
-              </a>
+              <a href="#about" className="page-scroll">About</a>
             </li>
             <li>
-              <a href="#services" className="page-scroll">
-                Services
-              </a>
+              <a href="#services" className="page-scroll">Services</a>
             </li>
             <li>
-              <a href="#portfolio" className="page-scroll">
-                Gallery
-              </a>
+              <a href="#portfolio" className="page-scroll">Gallery</a>
             </li>
             <li>
-              <a href="#testimonials" className="page-scroll">
-                Testimonials
-              </a>
+              <a href="#testimonials" className="page-scroll">Testimonials</a>
             </li>
             <li>
-              <a href="#team" className="page-scroll">
-                Team
-              </a>
-
+              <a href="#team" className="page-scroll">Team</a>
             </li>
             <li>
-  <Link to="/map" className="page-scroll">
-    Map
-  </Link>
-</li>
-            <li>
-              <a href="#contact" className="page-scroll">
-                Contact
-              </a>
+              <a href="#contact" className="page-scroll">Contact</a>
             </li>
-            <li>
-              <Link to="/login" className="page-scroll">
-                Login
-              </Link>
-            </li>
-            <li>
-              <Link to="/register" className="page-scroll">
-                Register
-              </Link>
-            </li>
+            {isAuthenticated ? (
+              <>
+                <li>
+                  <Link to="/map" className="page-scroll">Map</Link>
+                </li>
+                <li>
+                  <span className="navbar-text">Welcome, {username}</span>
+                </li>
+                <li>
+                  <button className="btn btn-link navbar-btn" onClick={handleLogout}>Logout</button>
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <Link to="/login" className="page-scroll">Login</Link>
+                </li>
+                <li>
+                  <Link to="/register" className="page-scroll">Register</Link>
+                </li>
+              </>
+            )}
           </ul>
         </div>
       </div>

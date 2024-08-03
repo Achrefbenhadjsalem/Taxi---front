@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom"; // Importer useNavigate pour la redirection
-import "./Login.css"; // Assurez-vous de créer ce fichier CSS
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../components/AuthContext";
+import "./Login.css";
 
 export const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
-  const navigate = useNavigate(); // Initialiser useNavigate
+  const navigate = useNavigate();
+  const { login } = useContext(AuthContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,7 +21,7 @@ export const Login = () => {
       });
       setSuccess("Login successful!");
       setError("");
-      // Gérer la réponse (ex : stocker le token, rediriger)
+      login(username); // Mettre à jour l'état d'authentification
       navigate("/payment"); // Rediriger vers la page de paiement
     } catch (error) {
       setError("Login failed. " + (error.response?.data?.error || error.message));

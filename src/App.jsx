@@ -9,13 +9,14 @@ import { Gallery } from "./components/gallery";
 import { Testimonials } from "./components/testimonials";
 import { Team } from "./components/Team";
 import { Contact } from "./components/contact";
-import { Register } from "./components/register"; // Ensure the path is correct
-import { Login } from "./components/login"; // Ensure the path is correct
-import Payment from "./components/Payment"; // Import the Payment component
-import MapAndFare from "./components/MapComponent"; // Import the MapComponent
+import { Register } from "./components/register";
+import { Login } from "./components/login";
+import Payment from "./components/Payment";
+import MapAndFare from "./components/MapComponent";
 import JsonData from "./data/data.json";
 import SmoothScroll from "smooth-scroll";
 import "./App.css";
+import { AuthProvider } from "./components/AuthContext"; // Importer AuthProvider
 
 export const scroll = new SmoothScroll('a[href*="#"]', {
   speed: 1000,
@@ -29,29 +30,31 @@ const App = () => {
   }, []);
 
   return (
-    <Router>
-      <div>
-        <Navigation />
-        <Routes>
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/payment" element={<Payment />} />
-          <Route path="/map" element={<MapAndFare />} />
-          <Route path="/" element={
-            <>
-              <Header data={landingPageData.Header} />
-              <Features data={landingPageData.Features} />
-              <About data={landingPageData.About} />
-              <Services data={landingPageData.Services} />
-              <Gallery data={landingPageData.Gallery} />
-              <Testimonials data={landingPageData.Testimonials} />
-              <Team data={landingPageData.Team} />
-              <Contact data={landingPageData.Contact} />
-            </>
-          } />
-        </Routes>
-      </div>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <div>
+          <Navigation />
+          <Routes>
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/payment" element={<Payment />} />
+            <Route path="/map" element={<MapAndFare />} />
+            <Route path="/" element={
+              <>
+                <Header data={landingPageData.Header} />
+                <Features data={landingPageData.Features} />
+                <About data={landingPageData.About} />
+                <Services data={landingPageData.Services} />
+                <Gallery data={landingPageData.Gallery} />
+                <Testimonials data={landingPageData.Testimonials} />
+                <Team data={landingPageData.Team} />
+                <Contact data={landingPageData.Contact} />
+              </>
+            } />
+          </Routes>
+        </div>
+      </Router>
+    </AuthProvider>
   );
 };
 
