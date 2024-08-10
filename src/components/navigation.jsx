@@ -1,14 +1,15 @@
+// components/Navigation.jsx
 import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../components/AuthContext";
 
 export const Navigation = () => {
-  const { isAuthenticated, username, logout } = useContext(AuthContext);
+  const { isAuthenticated, username, logout, userRole } = useContext(AuthContext); // Include userRole
   const navigate = useNavigate();
 
   const handleLogout = () => {
     logout();
-    navigate("/"); // Rediriger vers la page d'accueil après la déconnexion
+    navigate("/"); // Redirect to home after logout
   };
 
   return (
@@ -36,29 +37,14 @@ export const Navigation = () => {
             <li>
               <a href="#features" className="page-scroll">Features</a>
             </li>
-            <li>
-              <a href="#about" className="page-scroll">About</a>
-            </li>
-            <li>
-              <a href="#services" className="page-scroll">Services</a>
-            </li>
-            <li>
-              <a href="#portfolio" className="page-scroll">Gallery</a>
-            </li>
-            <li>
-              <a href="#testimonials" className="page-scroll">Testimonials</a>
-            </li>
-            <li>
-              <a href="#team" className="page-scroll">Team</a>
-            </li>
-            <li>
-              <a href="#contact" className="page-scroll">Contact</a>
-            </li>
+            {/* Other links... */}
             {isAuthenticated ? (
               <>
-                <li>
-                  <Link to="/map" className="page-scroll">Map</Link>
-                </li>
+                {userRole === 'superadmin' && (
+                  <li>
+                    <Link to="/superadmin/dashboard" className="page-scroll">Superadmin Dashboard</Link>
+                  </li>
+                )}
                 <li>
                   <span className="navbar-text">Welcome, {username}</span>
                 </li>
