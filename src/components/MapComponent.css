@@ -1,0 +1,84 @@
+/* .map-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+
+.map-container {
+    width: 664px;
+    height: 400px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    margin: 150 0 0 0;
+}
+
+.controls {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.search-controls {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.search-input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 45%;
+}
+
+label {
+    margin-bottom: 5px;
+    font-weight: bold;
+} */
+.map-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.leaflet-container {
+    width: 96%;
+    height: 60%;
+    max-width: 1000px;
+    max-height: 600px;
+    margin: 187px 0 0 0;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    width: 80%;
+}
+
+.controls input {
+    width: 50%;
+    margin: 1px 409px 0 0;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.controls button {
+    width: 20%;
+    padding: 6px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 41px;
+    cursor: pointer;
+}
+
+.controls button:hover {
+    background-color: #0056b3;
+}
+

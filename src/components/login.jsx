@@ -19,6 +19,10 @@ export const Login = () => {
         username,
         password,
       });
+
+      const token = response.data.token; // Assurez-vous que l'API renvoie un token
+      localStorage.setItem("authToken", token); // Sauvegarder le token dans le localStorage
+
       setSuccess("Login successful!");
       setError("");
       login(username); // Mettre à jour l'état d'authentification
