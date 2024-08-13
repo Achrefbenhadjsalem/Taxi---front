@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import './SuperadminDashboard.css'; // Ensure your custom styles, if any, do not override Bootstrap
+import './SuperadminDashboard.css'; // Custom styles for the Superadmin dashboard
 
 const SuperadminDashboard = () => {
     const [users, setUsers] = useState([]);
@@ -48,8 +48,8 @@ const SuperadminDashboard = () => {
                             <td>{user.email}</td>
                             <td>{user.isApproved ? "Approved" : "Pending"} - {user.isBlocked ? "Blocked" : "Active"}</td>
                             <td>
-                                <button className="btn btn-success btn-sm mr-2" onClick={() => handleApprove(user.id)}>Approve</button>
-                                <button className="btn btn-danger btn-sm mr-2" onClick={() => handleBlock(user.id)}>Block</button>
+                                <button className="btn btn-success btn-sm" onClick={() => handleApprove(user.id)}>Approve</button>
+                                <button className="btn btn-danger btn-sm" onClick={() => handleBlock(user.id)}>Block</button>
                                 <button className="btn btn-warning btn-sm" onClick={() => handleUnblock(user.id)}>Unblock</button>
                             </td>
                         </tr>
