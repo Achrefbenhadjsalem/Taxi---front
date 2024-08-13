@@ -1,0 +1,29 @@
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.table {
+    background-color: white;
+    border-radius: 5px;
+}
+
+.table th, .table td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.table th {
+    font-weight: bold;
+}
+
+.btn {
+    margin-right: 5px;
+}

@@ -12,7 +12,7 @@ import { Team } from "./components/Team";
 import { Contact } from "./components/contact";
 import { Register } from "./components/register";
 import { Login } from "./components/login";
-import { SuperadminDashboard } from './components/SuperadminDashboard';
+import SuperadminDashboard from './components/SuperadminDashboard';
 import MapComponent from "./components/MapComponent";
 import Payment from "./components/Payment";
 
@@ -43,7 +43,7 @@ const App = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/payment" element={<Payment />} />
             <Route path="/map" element={<MapComponent />} /> {/* Ajoute le composant MapComponent ici */}
-            <Route path="/superadmin/dashboard" element={<SuperadminDashboard />} /> {/* Superadmin route */}
+            <Route path="/superadmin/dashboard" element={<SuperadminDashboard />} />
             <Route path="/" element={
               <>
                 <Header data={landingPageData.Header} />
