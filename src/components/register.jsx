@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "./Register.css"; // Assurez-vous de créer ce fichier CSS
+import "./Register.css";
 
 export const Register = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [email, setEmail] = useState("");
+  const [role, setRole] = useState("Client"); // Ajoutez ce champ pour le rôle
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
@@ -18,10 +19,11 @@ export const Register = () => {
       return;
     }
     try {
-      await axios.post("http://localhost:3000/api/users/register", { // Assurez-vous que ce chemin correspond à votre backend
+      await axios.post("http://localhost:3000/api/users/register", {
         username,
         password,
         email,
+        role, // Envoyez le rôle avec les autres informations
       });
       setSuccess("Registration successful!");
       setError("");
@@ -81,6 +83,19 @@ export const Register = () => {
               onChange={(e) => setConfirmPassword(e.target.value)}
               required
             />
+          </div>
+          <div className="form-group">
+            <label htmlFor="role">Role</label>
+            <select
+              id="role"
+              name="role"
+              value={role}
+              onChange={(e) => setRole(e.target.value)}
+              required
+            >
+              <option value="Client">Client</option>
+              <option value="Driver">Driver</option>
+            </select>
           </div>
           <button type="submit" className="submit-button">Register</button>
         </form>
