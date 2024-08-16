@@ -13,19 +13,28 @@ const SuperadminDashboard = () => {
 
     const handleApprove = (id) => {
         axios.post(`http://localhost:3000/api/superadmin/approve/${id}`)
-            .then(response => setUsers(users.map(user => user.id === id ? response.data : user)))
+            .then(response => {
+                const updatedUser = response.data;
+                setUsers(users.map(user => user.id === id ? updatedUser : user));
+            })
             .catch(error => console.error("Error approving user:", error));
     };
 
     const handleBlock = (id) => {
         axios.post(`http://localhost:3000/api/superadmin/block/${id}`)
-            .then(response => setUsers(users.map(user => user.id === id ? response.data : user)))
+            .then(response => {
+                const updatedUser = response.data;
+                setUsers(users.map(user => user.id === id ? updatedUser : user));
+            })
             .catch(error => console.error("Error blocking user:", error));
     };
 
     const handleUnblock = (id) => {
         axios.post(`http://localhost:3000/api/superadmin/unblock/${id}`)
-            .then(response => setUsers(users.map(user => user.id === id ? response.data : user)))
+            .then(response => {
+                const updatedUser = response.data;
+                setUsers(users.map(user => user.id === id ? updatedUser : user));
+            })
             .catch(error => console.error("Error unblocking user:", error));
     };
 
